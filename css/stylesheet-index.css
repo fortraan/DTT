@@ -65,6 +65,7 @@ h1, h2, h3 {
     width: 500px;
     position: relative;
     top: 400px;
+    padding-bottom: 50px;
 }
 
 .nav-container {
