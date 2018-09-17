@@ -1,0 +1,7 @@
+name: 'DonaldTuringTest'
+version: 0.0.1
+description: An app that pits a Markov chain against the President.
+dependencies:
+  markov: ">=2.0.1"
+  string_scanner: ">=1.0.4"
+  html: ">=0.13.3+3"
