@@ -16,16 +16,55 @@ h1, h2, h3 {
     height: 100px;
     border-bottom: 3px #888888 solid;
     display: inline-block;
+    z-index: 1;
+    background-color: #cccccc;
 }
 
 .centered {
     margin: auto;
 }
 
-#about {
+#results {
     width: 500px;
     position: relative;
     top: 300px;
+}
+
+#showResults {
+    margin: auto;
+    width: 200px;
+    height: 80px;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+}
+
+#showResults div {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#shownResults {
+    margin: auto;
+    text-align: center;
+}
+
+#again {
+    margin: auto;
+    width: 100px;
+    height: 25px;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+}
+
+#about {
+    width: 500px;
+    position: relative;
+    top: 400px;
 }
 
 .nav-container {
