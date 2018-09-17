@@ -68,6 +68,10 @@ h1, h2, h3 {
     padding-bottom: 50px;
 }
 
+#order {
+    display: inline;
+}
+
 .nav-container {
     position: absolute;
     bottom: 0;
