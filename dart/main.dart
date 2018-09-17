@@ -6,10 +6,12 @@ import "dart:math";
 
 MarkovChain chain;
 Random rng;
-Element choice1, choice2, choice1p, choice2p;
+Element choice1, choice2, choice1p, choice2p, resultsButton, shownResults, shownResultsP, doItAgain, orderElement, about;
 int realLoc;
 int numCorrect;
 int numDone;
+int order = 3;
+bool resultsShowing;
 
 main() async {
   print("Loading tweets and generating markov chain");
@@ -20,17 +22,76 @@ main() async {
   choice2p = querySelector("#choice-2-text");
   choice1.onClick.listen(onChoice1Clicked);
   choice2.onClick.listen(onChoice2Clicked);
+  resultsButton = querySelector("#showResults");
+  shownResults = querySelector("#shownResults");
+  shownResultsP = querySelector("#shownResults p");
+  resultsButton.hidden = true;
+  shownResults.hidden = true;
+  resultsButton.onClick.listen(onResultsRequested);
+  doItAgain = querySelector("#again");
+  doItAgain.onClick.listen(onAgainClicked);
+  doItAgain.hidden = true;
   realLoc = 0;
   numCorrect = 0;
   numDone = 0;
+  orderElement = querySelector("#order");
+  if (order.toString().endsWith("1")) {
+    orderElement.text = order.toString() + "st";
+  } else if (order.toString().endsWith("2")) {
+    orderElement.text = order.toString() + "nd";
+  } else if (order.toString().endsWith("3")) {
+    orderElement.text = order.toString() + "rd";
+  } else {
+    orderElement.text = order.toString() + "th";
+  }
+
+  about = querySelector("#about");
+  about.style.top = "300px";
+  
+  resultsShowing = false;
 
   chain = await Stream.fromIterable(tweets)
-              .pipe(new MarkovChainGenerator(5));
+              .pipe(new MarkovChainGenerator(order));
   
   generateChoices();
 }
 
+void onAgainClicked(MouseEvent e) {
+  resultsShowing = false;
+  numDone = 0;
+  numCorrect = 0;
+  realLoc = 0;
+  resultsButton.hidden = true;
+  shownResults.hidden = true;
+  choice1.hidden = false;
+  choice2.hidden = false;
+  about.style.top = "300px";
+  generateChoices();
+}
+
+void onResultsRequested(MouseEvent e) {
+  resultsShowing = true;
+  print("Results requested");
+  resultsButton.hidden = true;
+  shownResults.hidden = false;
+  doItAgain.hidden = false;
+  double correct = numCorrect / numDone;
+  String correctWord = (numCorrect == 1) ? "time" : "times";
+  String doneWord = (numDone == 1) ? "time" : "times";
+  String incorrectWord = (numDone - numCorrect == 1) ? "time" : "times";
+  if (correct > 0.5) {
+    shownResultsP.text = "You rated Donald Trump more human than the Markov chain. Out of " + numDone.toString() + " $doneWord, you chose the real tweet " + numCorrect.toString() + " $correctWord.";
+  } else if (correct < 0.5) {
+    shownResultsP.text = "You rated the Markov chain more human than Donald Trump. Out of " + numDone.toString() + " $doneWord, you chose the fake tweet " + (numDone - numCorrect).toString() + " $incorrectWord.";
+  } else {
+    shownResultsP.text = "You rated the Markov chain equally human to Donald Trump.";
+  }
+}
+
 void onChoice1Clicked(MouseEvent e) {
+  if (resultsShowing) {
+    return;
+  }
   numDone++;
   if (realLoc == 1) {
     numCorrect++;
@@ -44,6 +105,9 @@ void onChoice1Clicked(MouseEvent e) {
 }
 
 void onChoice2Clicked(MouseEvent e) {
+  if (resultsShowing) {
+    return;
+  }
   numDone++;
   if (realLoc == 2) {
     numCorrect++;
@@ -57,6 +121,10 @@ void onChoice2Clicked(MouseEvent e) {
 }
 
 void generateChoices() {
+  if (numDone > 0) {
+    about.style.top = "400px";
+    resultsButton.hidden = false;
+  }
   String generatedTweet = getFakeTweet();
   String realTweet = getRealTweet();
   if (rng.nextBool()) {
