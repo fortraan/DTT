@@ -842,6 +842,14 @@
           throw H.wrapException(P.ArgumentError$value(other, null, null));
         return receiver + other;
       },
+      endsWith$1: function(receiver, other) {
+        var otherLength, t1;
+        otherLength = other.length;
+        t1 = receiver.length;
+        if (otherLength > t1)
+          return false;
+        return other === this.substring$1(receiver, t1 - otherLength);
+      },
       substring$2: function(receiver, startIndex, endIndex) {
         H.intTypeCheck(endIndex);
         if (typeof startIndex !== "number" || Math.floor(startIndex) !== startIndex)
@@ -2412,7 +2420,7 @@
       "^": "Object;dartException,stackTrace<"
     },
     unwrapException_saveStackTrace: {
-      "^": "Closure:5;ex",
+      "^": "Closure:6;ex",
       call$1: function(error) {
         if (!!J.getInterceptor(error).$isError)
           if (error.$thrownJsError == null)
@@ -2742,7 +2750,7 @@
       }
     },
     initHooks_closure: {
-      "^": "Closure:5;getTag",
+      "^": "Closure:6;getTag",
       call$1: function(o) {
         return this.getTag(o);
       }
@@ -3089,14 +3097,14 @@
     },
     _AsyncRun__scheduleImmediateJsOverride: [function(callback) {
       self.scheduleImmediate(H.convertDartClosureToJS(new P._AsyncRun__scheduleImmediateJsOverride_internalCallback(H.functionTypeCheck(callback, {func: 1, ret: -1})), 0));
-    }, "call$1", "async__AsyncRun__scheduleImmediateJsOverride$closure", 4, 0, 4],
+    }, "call$1", "async__AsyncRun__scheduleImmediateJsOverride$closure", 4, 0, 5],
     _AsyncRun__scheduleImmediateWithSetImmediate: [function(callback) {
       self.setImmediate(H.convertDartClosureToJS(new P._AsyncRun__scheduleImmediateWithSetImmediate_internalCallback(H.functionTypeCheck(callback, {func: 1, ret: -1})), 0));
-    }, "call$1", "async__AsyncRun__scheduleImmediateWithSetImmediate$closure", 4, 0, 4],
+    }, "call$1", "async__AsyncRun__scheduleImmediateWithSetImmediate$closure", 4, 0, 5],
     _AsyncRun__scheduleImmediateWithTimer: [function(callback) {
       H.functionTypeCheck(callback, {func: 1, ret: -1});
       P._TimerImpl$(0, callback);
-    }, "call$1", "async__AsyncRun__scheduleImmediateWithTimer$closure", 4, 0, 4],
+    }, "call$1", "async__AsyncRun__scheduleImmediateWithTimer$closure", 4, 0, 5],
     _makeAsyncAwaitCompleter: function($T) {
       return new P._AsyncAwaitCompleter(new P._SyncCompleter(new P._Future(0, $.Zone__current, [$T]), [$T]), false, [$T]);
     },
@@ -3245,7 +3253,7 @@
       P._rootHandleUncaughtError(null, null, t1, error, stackTrace);
     }, function(error) {
       return P._nullErrorHandler(error, null);
-    }, "call$2", "call$1", "async___nullErrorHandler$closure", 4, 2, 3],
+    }, "call$2", "call$1", "async___nullErrorHandler$closure", 4, 2, 4],
     _nullDoneHandler: [function() {
     }, "call$0", "async___nullDoneHandler$closure", 0, 0, 1],
     _runUserCode: function(userCode, onSuccess, onError, $T) {
@@ -3343,7 +3351,7 @@
       P._scheduleAsyncCallback(f);
     },
     _AsyncRun__initializeScheduleImmediate_internalCallback: {
-      "^": "Closure:2;_box_0",
+      "^": "Closure:3;_box_0",
       call$1: function(_) {
         var t1, f;
         t1 = this._box_0;
@@ -3442,7 +3450,7 @@
       }
     },
     _awaitOnObject_closure0: {
-      "^": "Closure:6;bodyFunction",
+      "^": "Closure:7;bodyFunction",
       call$2: function(error, stackTrace) {
         this.bodyFunction.call$2(1, new H.ExceptionAndStackTrace(error, H.interceptedTypeCheck(stackTrace, "$isStackTrace")));
       }
@@ -3559,7 +3567,7 @@
         this._completeError$2(error, stackTrace);
       }, function(error) {
         return this.completeError$2(error, null);
-      }, "completeError$1", "call$2", "call$1", "get$completeError", 4, 2, 3],
+      }, "completeError$1", "call$2", "call$1", "get$completeError", 4, 2, 4],
       $isCompleter: 1
     },
     _SyncCompleter: {
@@ -3733,7 +3741,7 @@
         P._Future__propagateToListeners(this, listeners);
       }, function(error) {
         return this._completeError$2(error, null);
-      }, "_completeError$1", "call$2", "call$1", "get$_completeError", 4, 2, 3],
+      }, "_completeError$1", "call$2", "call$1", "get$_completeError", 4, 2, 4],
       _asyncComplete$1: function(value) {
         var t1;
         H.futureOrCheck(value, {futureOr: 1, type: H.getTypeArgumentByIndex(this, 0)});
@@ -3918,7 +3926,7 @@
       }
     },
     _Future__chainForeignFuture_closure: {
-      "^": "Closure:2;target",
+      "^": "Closure:3;target",
       call$1: function(value) {
         var t1 = this.target;
         t1._state = 0;
@@ -4115,7 +4123,7 @@
       }
     },
     Stream_forEach__closure0: {
-      "^": "Closure:2;",
+      "^": "Closure:3;",
       call$1: function(_) {
       }
     },
@@ -4418,7 +4426,7 @@
       }
     },
     _cancelAndErrorClosure_closure: {
-      "^": "Closure:6;subscription,future",
+      "^": "Closure:7;subscription,future",
       call$2: function(error, stackTrace) {
         P._cancelAndError(this.subscription, this.future, error, H.interceptedTypeCheck(stackTrace, "$isStackTrace"));
       }
@@ -5818,7 +5826,7 @@
       }
     },
     MarkovChain_generate_closure: {
-      "^": "Closure:7;",
+      "^": "Closure:8;",
       call$1: function(string) {
         return R.Token_Token(H.stringTypeCheck(string));
       }
@@ -6050,7 +6058,7 @@
       }
     },
     MarkovChainGenerator_addStream__closure: {
-      "^": "Closure:7;",
+      "^": "Closure:8;",
       call$1: function(string) {
         return R.Token_Token(H.stringTypeCheck(string));
       }
@@ -6150,13 +6158,13 @@
       }
     },
     TokenSequence_hashCode_closure: {
-      "^": "Closure:8;",
+      "^": "Closure:9;",
       call$1: function(token) {
         return H.interceptedTypeCheck(token, "$isToken").string;
       }
     },
     TokenSequence_toString_closure: {
-      "^": "Closure:8;",
+      "^": "Closure:9;",
       call$1: function(t) {
         return H.interceptedTypeCheck(t, "$isToken").string;
       }
@@ -6188,7 +6196,7 @@
   }], ["", "../dart/main.dart",, F, {
     "^": "",
     main: function() {
-      var $async$goto = 0, $async$completer = P._makeAsyncAwaitCompleter(null), t1, t2, t3, $async$temp1, $async$temp2;
+      var $async$goto = 0, $async$completer = P._makeAsyncAwaitCompleter(null), t1, t2, t3, t4, $async$temp1, $async$temp2;
       var $async$main = P._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
         if ($async$errorCode === 1)
           return P._asyncRethrow($async$result, $async$completer);
@@ -6203,24 +6211,59 @@
               $.choice2 = t1.querySelector("#choice-2");
               $.choice1p = t1.querySelector("#choice-1-text");
               $.choice2p = t1.querySelector("#choice-2-text");
-              t1 = J.get$onClick$x($.choice1);
-              t2 = H.getTypeArgumentByIndex(t1, 0);
-              W._EventStreamSubscription$(t1._target, t1._eventType, H.functionTypeCheck(F.main__onChoice1Clicked$closure(), {func: 1, ret: -1, args: [t2]}), false, t2);
-              t2 = J.get$onClick$x($.choice2);
-              t1 = H.getTypeArgumentByIndex(t2, 0);
-              W._EventStreamSubscription$(t2._target, t2._eventType, H.functionTypeCheck(F.main__onChoice2Clicked$closure(), {func: 1, ret: -1, args: [t1]}), false, t1);
+              t2 = J.get$onClick$x($.choice1);
+              t3 = H.getTypeArgumentByIndex(t2, 0);
+              W._EventStreamSubscription$(t2._target, t2._eventType, H.functionTypeCheck(F.main__onChoice1Clicked$closure(), {func: 1, ret: -1, args: [t3]}), false, t3);
+              t3 = J.get$onClick$x($.choice2);
+              t2 = H.getTypeArgumentByIndex(t3, 0);
+              W._EventStreamSubscription$(t3._target, t3._eventType, H.functionTypeCheck(F.main__onChoice2Clicked$closure(), {func: 1, ret: -1, args: [t2]}), false, t2);
+              $.resultsButton = t1.querySelector("#showResults");
+              $.shownResults = t1.querySelector("#shownResults");
+              $.shownResultsP = t1.querySelector("#shownResults p");
+              t2 = $.resultsButton;
+              t2.hidden = true;
+              $.shownResults.hidden = true;
+              t2 = J.get$onClick$x(t2);
+              t3 = H.getTypeArgumentByIndex(t2, 0);
+              W._EventStreamSubscription$(t2._target, t2._eventType, H.functionTypeCheck(F.main__onResultsRequested$closure(), {func: 1, ret: -1, args: [t3]}), false, t3);
+              t3 = t1.querySelector("#again");
+              $.doItAgain = t3;
+              t3 = J.get$onClick$x(t3);
+              t2 = H.getTypeArgumentByIndex(t3, 0);
+              W._EventStreamSubscription$(t3._target, t3._eventType, H.functionTypeCheck(F.main__onAgainClicked$closure(), {func: 1, ret: -1, args: [t2]}), false, t2);
+              $.doItAgain.hidden = true;
               $.realLoc = 0;
               $.numCorrect = 0;
               $.numDone = 0;
+              $.orderElement = t1.querySelector("#order");
+              if (C.JSString_methods.endsWith$1(C.JSInt_methods.toString$0($.order), "1"))
+                $.orderElement.textContent = C.JSInt_methods.toString$0($.order) + "st";
+              else if (C.JSString_methods.endsWith$1(C.JSInt_methods.toString$0($.order), "2"))
+                $.orderElement.textContent = C.JSInt_methods.toString$0($.order) + "nd";
+              else {
+                t2 = C.JSString_methods.endsWith$1(C.JSInt_methods.toString$0($.order), "3");
+                t3 = $.order;
+                t4 = $.orderElement;
+                if (t2)
+                  t4.textContent = C.JSInt_methods.toString$0(t3) + "rd";
+                else
+                  t4.textContent = C.JSInt_methods.toString$0(t3) + "th";
+              }
+              t1 = t1.querySelector("#about");
+              $.about = t1;
+              t1 = t1.style;
+              t1.top = "300px";
+              $.resultsShowing = false;
               t1 = P.String;
               t2 = P.Stream_Stream$fromIterable($.$get$tweets(), t1);
-              t3 = new X.MarkovChainGenerator(5, true);
-              t3._chain = new E.MarkovChain(P.LinkedHashMap_LinkedHashMap$_empty(G.TokenSequence, [A.ProbabilityDistribution, P.String]), 5, C.C__JSRandom);
-              t3._stringTokens = P.ListQueue_ListQueue$from(P.List_List$filled(5, "\n", false, null), t1);
+              t3 = $.order;
+              t4 = new X.MarkovChainGenerator(t3, true);
+              t4._chain = new E.MarkovChain(P.LinkedHashMap_LinkedHashMap$_empty(G.TokenSequence, [A.ProbabilityDistribution, P.String]), t3, C.C__JSRandom);
+              t4._stringTokens = P.ListQueue_ListQueue$from(P.List_List$filled(t3, "\n", false, null), t1);
               $async$temp1 = $;
               $async$temp2 = H;
               $async$goto = 2;
-              return P._asyncAwait(t2.pipe$1(t3), $async$main);
+              return P._asyncAwait(t2.pipe$1(t4), $async$main);
             case 2:
               // returning from await.
               $async$temp1.chain = $async$temp2.interceptedTypeCheck($async$result, "$isMarkovChain");
@@ -6231,9 +6274,61 @@
       });
       return P._asyncStartSync($async$main, $async$completer);
     },
+    onAgainClicked: [function(e) {
+      var t1;
+      H.interceptedTypeCheck(e, "$isMouseEvent");
+      $.resultsShowing = false;
+      $.numDone = 0;
+      $.numCorrect = 0;
+      $.realLoc = 0;
+      $.resultsButton.hidden = true;
+      $.shownResults.hidden = true;
+      $.choice1.hidden = false;
+      $.choice2.hidden = false;
+      t1 = $.about.style;
+      t1.top = "300px";
+      F.generateChoices();
+    }, "call$1", "main__onAgainClicked$closure", 4, 0, 2],
+    onResultsRequested: [function(e) {
+      var t1, t2, correct, correctWord, doneWord, incorrectWord, t3, t4;
+      H.interceptedTypeCheck(e, "$isMouseEvent");
+      $.resultsShowing = true;
+      P.print("Results requested");
+      $.resultsButton.hidden = true;
+      $.shownResults.hidden = false;
+      $.doItAgain.hidden = false;
+      t1 = $.numCorrect;
+      t2 = $.numDone;
+      if (typeof t1 !== "number")
+        return t1.$div();
+      if (typeof t2 !== "number")
+        return H.iae(t2);
+      correct = t1 / t2;
+      correctWord = t1 === 1 ? "time" : "times";
+      doneWord = t2 === 1 ? "time" : "times";
+      incorrectWord = t2 - t1 === 1 ? "time" : "times";
+      if (correct > 0.5)
+        $.shownResultsP.textContent = "You rated Donald Trump more human than the Markov chain. Out of " + C.JSInt_methods.toString$0(t2) + (" " + doneWord + ", you chose the real tweet ") + J.toString$0$($.numCorrect) + (" " + correctWord + ".");
+      else {
+        t1 = $.shownResultsP;
+        if (correct < 0.5) {
+          t2 = "You rated the Markov chain more human than Donald Trump. Out of " + C.JSInt_methods.toString$0(t2) + (" " + doneWord + ", you chose the fake tweet ");
+          t3 = $.numDone;
+          t4 = $.numCorrect;
+          if (typeof t3 !== "number")
+            return t3.$sub();
+          if (typeof t4 !== "number")
+            return H.iae(t4);
+          t1.textContent = t2 + C.JSInt_methods.toString$0(t3 - t4) + (" " + incorrectWord + ".");
+        } else
+          t1.textContent = "You rated the Markov chain equally human to Donald Trump.";
+      }
+    }, "call$1", "main__onResultsRequested$closure", 4, 0, 2],
     onChoice1Clicked: [function(e) {
       var t1, t2;
       H.interceptedTypeCheck(e, "$isMouseEvent");
+      if ($.resultsShowing)
+        return;
       t1 = $.numDone;
       if (typeof t1 !== "number")
         return t1.$add();
@@ -6248,10 +6343,12 @@
       P.print("Num done: " + C.JSInt_methods.toString$0(t1));
       P.print("Num correct: " + J.toString$0$($.numCorrect));
       F.generateChoices();
-    }, "call$1", "main__onChoice1Clicked$closure", 4, 0, 9],
+    }, "call$1", "main__onChoice1Clicked$closure", 4, 0, 2],
     onChoice2Clicked: [function(e) {
       var t1, t2;
       H.interceptedTypeCheck(e, "$isMouseEvent");
+      if ($.resultsShowing)
+        return;
       t1 = $.numDone;
       if (typeof t1 !== "number")
         return t1.$add();
@@ -6266,9 +6363,17 @@
       P.print("Num done: " + C.JSInt_methods.toString$0(t1));
       P.print("Num correct: " + J.toString$0$($.numCorrect));
       F.generateChoices();
-    }, "call$1", "main__onChoice2Clicked$closure", 4, 0, 9],
+    }, "call$1", "main__onChoice2Clicked$closure", 4, 0, 2],
     generateChoices: function() {
-      var generatedTweet, t1, t2, realTweet, t3;
+      var t1, generatedTweet, t2, realTweet, t3;
+      t1 = $.numDone;
+      if (typeof t1 !== "number")
+        return t1.$gt();
+      if (t1 > 0) {
+        t1 = $.about.style;
+        t1.top = "400px";
+        $.resultsButton.hidden = false;
+      }
       generatedTweet = F.getFakeTweet();
       t1 = $.$get$tweets();
       t2 = $.rng.nextInt$1(11118);
@@ -6612,9 +6717,17 @@
   $.choice2 = null;
   $.choice1p = null;
   $.choice2p = null;
+  $.resultsButton = null;
+  $.shownResults = null;
+  $.shownResultsP = null;
+  $.doItAgain = null;
+  $.orderElement = null;
+  $.about = null;
   $.realLoc = null;
   $.numCorrect = null;
   $.numDone = null;
+  $.order = 3;
+  $.resultsShowing = null;
   $ = null;
   init.isHunkLoaded = function(hunkHash) {
     return !!$dart_deferred_initializers$[hunkHash];
@@ -6730,7 +6843,7 @@
   Isolate = Isolate.$finishIsolateConstructor(Isolate);
   $ = new Isolate();
   init.metadata = [];
-  init.types = [{func: 1, ret: P.Null}, {func: 1, ret: -1}, {func: 1, ret: P.Null, args: [,]}, {func: 1, ret: -1, args: [P.Object], opt: [P.StackTrace]}, {func: 1, ret: -1, args: [{func: 1, ret: -1}]}, {func: 1, args: [,]}, {func: 1, ret: P.Null, args: [, P.StackTrace]}, {func: 1, ret: R.Token, args: [P.String]}, {func: 1, ret: P.String, args: [R.Token]}, {func: 1, ret: -1, args: [W.MouseEvent]}, {func: 1, args: [, P.String]}, {func: 1, args: [P.String]}, {func: 1, ret: P.Null, args: [{func: 1, ret: -1}]}, {func: 1, ret: -1, args: [,]}, {func: 1, ret: P.Null, args: [P.int,,]}, {func: 1, ret: -1, opt: [P.Object]}, {func: 1, ret: P.Null, args: [,], opt: [,]}, {func: 1, ret: [P._Future,,], args: [,]}, {func: 1, ret: [P.Future,,], args: [,]}, {func: 1, ret: P.Null, args: [,,]}, {func: 1, ret: -1, args: [W.Event]}, {func: 1, ret: [A.ProbabilityDistribution, P.String]}, {func: 1, ret: [P.Future, P.Null], args: [P.String]}, {func: 1, ret: P.int}, {func: 1, ret: P.int, args: [P.int,,]}, {func: 1, ret: P.bool, args: [R.Token]}, {func: 1, ret: -1, args: [P.Object]}];
+  init.types = [{func: 1, ret: P.Null}, {func: 1, ret: -1}, {func: 1, ret: -1, args: [W.MouseEvent]}, {func: 1, ret: P.Null, args: [,]}, {func: 1, ret: -1, args: [P.Object], opt: [P.StackTrace]}, {func: 1, ret: -1, args: [{func: 1, ret: -1}]}, {func: 1, args: [,]}, {func: 1, ret: P.Null, args: [, P.StackTrace]}, {func: 1, ret: R.Token, args: [P.String]}, {func: 1, ret: P.String, args: [R.Token]}, {func: 1, args: [, P.String]}, {func: 1, args: [P.String]}, {func: 1, ret: P.Null, args: [{func: 1, ret: -1}]}, {func: 1, ret: -1, args: [,]}, {func: 1, ret: P.Null, args: [P.int,,]}, {func: 1, ret: -1, opt: [P.Object]}, {func: 1, ret: P.Null, args: [,], opt: [,]}, {func: 1, ret: [P._Future,,], args: [,]}, {func: 1, ret: [P.Future,,], args: [,]}, {func: 1, ret: P.Null, args: [,,]}, {func: 1, ret: -1, args: [W.Event]}, {func: 1, ret: [A.ProbabilityDistribution, P.String]}, {func: 1, ret: [P.Future, P.Null], args: [P.String]}, {func: 1, ret: P.int}, {func: 1, ret: P.int, args: [P.int,,]}, {func: 1, ret: P.bool, args: [R.Token]}, {func: 1, ret: -1, args: [P.Object]}];
   function convertToFastObject(properties) {
     function MyClass() {
     }
