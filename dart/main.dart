@@ -10,7 +10,7 @@ Element choice1, choice2, choice1p, choice2p, resultsButton, shownResults, shown
 int realLoc;
 int numCorrect;
 int numDone;
-int order = 3;
+int order = 5;
 bool resultsShowing;
 
 main() async {
