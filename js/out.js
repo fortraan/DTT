@@ -6381,15 +6381,15 @@
         return H.ioore(t1, t2);
       realTweet = t1[t2];
       t1 = $.rng.nextBool$0();
-      t2 = $.choice2p;
-      t3 = $.choice1p;
+      t2 = $.choice1p;
+      t3 = $.choice2p;
       if (t1) {
-        t3.textContent = generatedTweet;
-        t2.textContent = realTweet;
+        t2.textContent = generatedTweet;
+        t3.textContent = realTweet;
         $.realLoc = 2;
       } else {
-        t3.textContent = realTweet;
-        t2.textContent = generatedTweet;
+        t2.textContent = realTweet;
+        t3.textContent = generatedTweet;
         $.realLoc = 1;
       }
     },
@@ -6726,7 +6726,7 @@
   $.realLoc = null;
   $.numCorrect = null;
   $.numDone = null;
-  $.order = 3;
+  $.order = 5;
   $.resultsShowing = null;
   $ = null;
   init.isHunkLoaded = function(hunkHash) {
